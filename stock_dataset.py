@@ -33,12 +33,8 @@ for key in initial_data:
 
 
 # creating dataframe with all data for visualization
-data_dict = {}
 
-for company, dataset in initial_data.items():
-    data_dict[company] = dataset.assign(company_name=company)
-
-dataset = pd.concat(data_dict.values()).reset_index(drop=True)
+dataset = pd.concat(initial_data.values()).reset_index(drop=True)
 
 dataset.to_csv('data/stock_initial_data.csv')
 
