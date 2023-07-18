@@ -14,7 +14,8 @@ warnings.filterwarnings("ignore", message="Parsing dates")
 ticker_list = yh.tickers_dow()
 initial_data = {}
 
-start_date = (datetime.now() - relativedelta(years=3)).strftime('%d-%m-%Y')
+start_date = (datetime.now() - relativedelta(years=
+                                             3)).strftime('%d-%m-%Y')
 end_date = datetime.today().strftime('%d-%m-%Y')
 
 for ticker in ticker_list:
