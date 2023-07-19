@@ -15,7 +15,7 @@ scaler = StandardScaler()
 # Preparing the data to be clustered
 for key in stock_data_copy:
     stock_data_copy[key] = stock_data_copy[key][['close', 'dailychange']]
-    stock_data_copy[key] = scaler.fit_transform(stock_data[key])
+    stock_data_copy[key] = scaler.fit_transform(stock_data_copy[key])
 
 X = np.array(list(stock_data_copy.values()))
 
