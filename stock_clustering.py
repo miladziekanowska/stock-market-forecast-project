@@ -7,15 +7,17 @@ from sklearn.preprocessing import StandardScaler
 # importing our data
 from stock_dataset import stock_data
 
+stock_data_copy = stock_data.copy()
+
 # for scaling the data
 scaler = StandardScaler()
 
 # Preparing the data to be clustered
-for key in stock_data:
-    stock_data[key] = stock_data[key][['close', 'dailychange']]
-    stock_data[key] = scaler.fit_transform(stock_data[key])
+for key in stock_data_copy:
+    stock_data_copy[key] = stock_data_copy[key][['close', 'dailychange']]
+    stock_data_copy[key] = scaler.fit_transform(stock_data[key])
 
-X = np.array(list(stock_data.values()))
+X = np.array(list(stock_data_copy.values()))
 
 
 # using the TimeSeriesKMeans model for clustering
@@ -31,7 +33,7 @@ labels = kmeans.labels_
 # Creating the clusters dictionary for future use
 clusters_dict = {}
 
-for i, firm_name in enumerate(stock_data.keys()):
+for i, firm_name in enumerate(stock_data_copy.keys()):
     if labels[i] == 0:
         if 0 not in clusters_dict.keys():
             clusters_dict[0] = [firm_name]
